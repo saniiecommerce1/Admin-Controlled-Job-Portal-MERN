@@ -2,31 +2,51 @@ import React from 'react'
 
 import { Carousel, CarouselContent, CarouselItem, CarouselPrevious, CarouselNext } from './ui/carousel.jsx';
 import { Button } from './ui/button.jsx';
+import { useDispatch } from 'react-redux';
+import { setSearchedQuery } from '../redux/jobSlice.js';
+import { useNavigate } from 'react-router-dom';
 const carousel = [
-    "Frontend Developer",
-    "Backend Developer",
-    "FullStack Developer",
-    "Mobile Developer",
+    "Frontend",
+    "Backend ",
+    "FullStack ",
+    "Flutter",
     "Data Science",
+    "HR",
     "Graphic Designer",
-    ".Net Developer",
-    "C++ Developer"
+    ".Net ",
+    "C++ ",
+    "C#"
 ]
 
 const CategoryCarousel = () => {
+
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  const carouselHandler = (e)=>{
+    const category = e.target.innerText.toLowerCase();
+    
+    dispatch(setSearchedQuery(category));
+    navigate('/browse');
+
+  }
   return (
 
-  <Carousel className='w-40 mx-auto px-2'>
-        <CarouselContent >
-        {carousel.map((category, index) => (
-          <CarouselItem key={index} >
-            <Button className='rounded-full bg-[#e76610] w-full hover:bg-[#7a3304]'>
-
+  <Carousel className='w-1/2 mx-auto px-2 mt-2'>        
+      <CarouselContent>
+        {
+          carousel.map((category, index) => (
+          <CarouselItem key={index}  className='flex justify-between'>
+            <Button className='rounded-full bg-[#e76610] w-[45%] md:w-1/3 hover:bg-[#7a3304] ' onClick={carouselHandler}>
             {category}
-            </Button>
+            </Button>    
+            <Button className='rounded-full bg-[#e76610] w-[45%] md:w-1/3 hover:bg-[#7a3304]' onClick={carouselHandler}>
+            {carousel[index+1 < carousel.length ? index+1 : 0]}
+            </Button> 
          
           </CarouselItem>
-        ))}
+        ))
+        }
       </CarouselContent>
       <CarouselPrevious />
       <CarouselNext />

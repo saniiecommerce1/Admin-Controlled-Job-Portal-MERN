@@ -79,8 +79,8 @@ finally{
 
 
   return (
-    <div className='flex justify-center items-center mx-auto max-w-5xl h-[calc(100svh-60px)'>
-      <form className=' flex flex-col gap-4 w-1/2 p-6 border rounded-2xl'>
+    <div className='flex justify-center items-center mx-auto max-w-5xl h-[calc(100svh-80px)] md:h-[calc(100svh-60px)]'>
+      <form className=' flex flex-col gap-4 w-[85%] md:w-1/2 p-6 border rounded-2xl shadow-md'>
               
               <div className='flex flex-col gap-2' >
                   <Label>Full Name</Label>
@@ -121,7 +121,7 @@ finally{
                   </div>
               </div>
 
-              {loading ? <Button className='w-full bg-emerald-950'><Loader2 className='animate-spin'>Please Wait</Loader2></Button>:<Button type='submit' className='w-full bg-emerald-700' onClick={submitHandler}>Signup</Button>}
+              {loading ? <Button className='w-full bg-[#e76610] hover:bg-[#7a3304]'><Loader2 className='animate-spin'>Please Wait</Loader2></Button>:<Button type='submit' className='w-full bg-[#e76610] hover:bg-[#7a3304]' onClick={submitHandler}>Signup</Button>}
 
                <span className='text-sm'>Already Have Account? <Link to='/login' className='text-blue-600'>Login</Link></span> 
 

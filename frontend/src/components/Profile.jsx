@@ -4,11 +4,11 @@ import { Contact2, Mail } from 'lucide-react'
 import { Avatar, AvatarImage } from './ui/avatar.jsx'
 import { useSelector,useDispatch  } from 'react-redux'
 import { Badge } from './ui/badge.jsx'
-import AppliedJobTable from './AppliedJobTable.jsx'
 import UpdateProfile from './UpdateProfile.jsx'
 import axios from 'axios'
 import { toast } from 'sonner'
 import { setUser } from '../redux/userSlice.js'
+
 
 const Profile = () => {
 
@@ -61,12 +61,12 @@ const Profile = () => {
 
 
     return (
-        <div>
-            <div className='max-w-4xl mx-auto bg-white border border-gray-300 shadow-xl rounded-2xl my-5 p-8 flex flex-col gap-9'>
+        
+            <div className='max-w-4xl mx-auto bg-white border border-gray-300 shadow-xl rounded-2xl mt-10 p-8 flex flex-col gap-9'>
                 <div className='flex justify-between'>
-                    <div className='flex gap-5'>
+                    <div className='flex gap-1'>
                         <Avatar className='h-14 w-14'>
-                            <AvatarImage src={ user?.profile?.profileImage || "https://github.com/shadcn.png"} alt='profile' onClick={handleImageClick} className='cursor-pointer' />
+                            <AvatarImage src={ user?.profile?.profileImage || "https://kawaii-avatar.vercel.app/api/avatar"} alt='profile' onClick={handleImageClick} className='cursor-pointer' />
                         </Avatar>
                         <input
                             type="file"
@@ -76,13 +76,13 @@ const Profile = () => {
                             onChange={handleFileChange}
                         />
                         <div>
-                            <h1 className='font-medium text-xl'>{user?.fullName}</h1>
+                            <h1 className='font-medium text-xl pt-4'>{user?.fullName}</h1>
                             <p>{user?.profile?.title}</p>
                         </div>
                     </div>
                     <UpdateProfile />
-
                 </div>
+
                 <div>
                     <div className='flex gap-4 mb-2'>
                         <Mail />
@@ -108,13 +108,8 @@ const Profile = () => {
 
             </div>
 
-            <div className='max-w-4xl mx-auto bg-white border border-gray-300 shadow-xl rounded-2xl my-5 p-8 flex flex-col gap-9'>
-                <h1 className='font-medium mb-2'>Applied Jobs</h1>
-                <AppliedJobTable />
-            </div>
+          
 
-
-        </div>
 
     )
 }

@@ -68,7 +68,7 @@ const UpdateProfile = () => {
         }
     }
     return (
-        <div>
+        <div className=''>
             {open &&  <Dialog >
                 <form>
                     <DialogTrigger asChild>
@@ -108,7 +108,7 @@ const UpdateProfile = () => {
                             </div>
                         </div>
                         <DialogFooter>
-                            {loading ? <Button className='w-full bg-emerald-950'><Loader2 className='animate-spin'>Please Wait</Loader2></Button> : <Button type='submit' className='w-full bg-emerald-700' onClick={submitHandler}>Update</Button>}
+                            {loading ? <Button className='w-full bg-[#e76610] hover:bg-[#7a3304]'><Loader2 className='animate-spin'>Please Wait</Loader2></Button> : <Button type='submit' className='w-full bg-[#e76610] hover:bg-[#7a3304]' onClick={submitHandler}>Update</Button>}
 
                         </DialogFooter>
                     </DialogContent>

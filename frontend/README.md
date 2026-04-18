@@ -10,3 +10,5 @@
 9. if file = null or ''  in Formdata then multer do req.file == undefined and req.body.file = 'null'(string convert by FormData) so its best not t pass null
 10. import company-logo from '../../assets/company-logo.jpg' is wrong use camelCase 
 import companyLogo from '../../assets/company-logo.jpg' 
+13. .gitignore ----   nodemodule/ all sub folder not staged , unlike .env so **/.env 
+14. npm run dev -- --host 0.0.0.0 --port 3000 if not accessible in mobile bc firewall and wanna used different port like 3000

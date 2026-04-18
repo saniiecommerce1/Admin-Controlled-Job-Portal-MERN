@@ -16,13 +16,13 @@ const JobCards = ({ job }) => {
     const jobDate = new Date(date);
     const diffTime = Math.abs(now - jobDate);
     const diffDays = diffTime / (1000 * 60 * 60 * 24);
-    return Math.floor(diffDays);
+    return Math.floor(diffDays) ? Math.floor(diffDays) + ' days ago' : 'Today';
   }
 
   return (
-    <div className='p-5 shadow-2xl rounded-md bg-white border border-gray-100'>
+    <div className='p-2 md:p-5 shadow-2xl rounded-md bg-white border border-gray-100'>
         <div className='flex items-center justify-between'>
-            <p className='text-sm text-gray-500'>{daysAgo(job?.createdAt) == 0 ? 'Today' : `${daysAgo(job?.createdAt)} days ago`}</p>
+            <p className='text-sm text-gray-500'>{daysAgo(job?.createdAt)}</p>
             <Button className='rounded-full' variant='outline' size='icon'><Bookmark/></Button>
         </div>
 
@@ -39,16 +39,16 @@ const JobCards = ({ job }) => {
         </div>
         </div>
       
-                  <div>
-                <h1 className='font-medium text-lg my-2'>{job?.title}</h1>
-                <p className='text-sm text-gray-600'>{job?.description}</p>
+              <div>
+                <h1 className='font-medium text-lg my-2 h-[25px] overflow-hidden'>{job?.title}</h1>
+                <p className='text-sm text-gray-600 h-[60px] overflow-hidden'>{job?.description}</p>
             </div>
-            <div className='flex items-center gap-2 mt-4'>
+            <div className='flex items-center gap-2 mt-3'>
                 <Badge className={'text-[#e76610] font-bold'} variant="ghost">{job?.position} Positions</Badge>
                 <Badge className={'text-[#e76610] font-bold'} variant="ghost">{job?.jobType}</Badge>
                 <Badge className={'text-[#e76610] font-bold'} variant="ghost">{job?.salary}</Badge>
             </div>
-            <div className='flex items-center gap-4 mt-4'>
+            <div className='flex justify-between gap-4 mt-2'>
                 <Button onClick={()=>navigate(`/description/${job?._id}`)} variant="outline">Details</Button>
                 <Button variant="outline">Save For Later</Button>
             </div>

@@ -41,11 +41,11 @@ const FilterCard = () => {
 
   return (
    
-      <RadioGroup className='w-[10%] p-2 h-[calc(100svh-50px)] overflow-y-scroll'>{
+      <RadioGroup className='md:w-[10%] pl-2 h-[calc(100svh-50px)] overflow-y-scroll'>{
         
         filterData.map((item, index)=>
-          <div key={index} className=''>
-            <h1 className='tx-sm'>{item.type}</h1>
+          <div key={index} className='h-fit rounded-md '>
+            <h1 className='font-bold text-sm'>{item.type}</h1>
             {
             item.options.map((option, ind)=>(
               <div key={ind} className='flex gap-2 py-1'>
@@ -56,8 +56,6 @@ const FilterCard = () => {
 
             ))
           }
-
-
           </div>
       )
         }

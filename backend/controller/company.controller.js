@@ -17,11 +17,11 @@ export const registerCompany = async (req, res) => {
         }
 
         const { companySize, location, infoEmail } = req.body
-
+        
         const addCompany = await Company.create({
             companyName,
             companySize: companySize || '',
-            logo: logo || '',
+            logo: '',
             location: location || '',
             infoEmail: infoEmail || '',
             createdByUserId: req.user._id
@@ -106,7 +106,7 @@ export const updateCompany = async (req, res) => {
                 success: false
             })
 
-        if (req.file) {
+                    if (req.file) {
             //upload to cloudinary and get the url
             const file = req.file
             const fileUri = getDataUri(file)

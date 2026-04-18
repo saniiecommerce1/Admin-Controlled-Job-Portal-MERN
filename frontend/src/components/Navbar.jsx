@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Link, Outlet, useNavigate } from 'react-router-dom'
 import { Popover, PopoverContent, PopoverTrigger } from './ui/popover.jsx'
 import { Button } from './ui/button.jsx'
@@ -12,6 +12,8 @@ import { resetCompany } from '../redux/companySlice.js'
 import { resetApplication } from '../redux/applicationSlice.js'
 
 const Navbar = () => {
+    
+    const [open, setOpen] = useState(true)
 
     const { loading, user } = useSelector(store => store.user);
     const dispatch = useDispatch()
@@ -28,12 +30,12 @@ const Navbar = () => {
 
     return (
         <>
-            <div className='bg-white flex justify-between mx-auto h-[60px] max-w-7xl'>
+            <div className={`bg-white flex justify-between mx-auto  max-w-7xl items-center border-b-2 p-2 border-gray-800 ${user ? 'flex-col md:flex-row' :''}`}>
                 <div className='mt-3.5'>
-                    <h1 className='text-2xl text-[#e76610] font-bold'>Job<span className='text-[#7a3304]'>Seeker.com</span></h1>
+                    <h1 className='text-lg md:text-2xl text-[#e76610] font-bold'>Job<span className='text-[#7a3304]'>Seeker.com</span></h1>
                 </div>
-                <div className='flex gap-12'>
-                    <ul className='flex font-medium gap-5 mt-3.5'>
+                <div className='flex gap-3 md:gap-10 items-center'>
+                    <ul className='flex text-sm md:text-base md:font-medium gap-5 md:gap-5 mt-3.5'>
                         { !user &&
                             <>
                                 <li><Link to="/">Home</Link></li>
@@ -45,6 +47,7 @@ const Navbar = () => {
                                 <li><Link to="/">Home</Link></li>
                                 <li><Link to="/jobs">Jobs</Link></li>
                                 <li><Link to="/browse">Browse</Link></li>
+                                <li><Link to="/my-jobs">My Jobs</Link></li>
 
                             </>}
                         {
@@ -56,17 +59,19 @@ const Navbar = () => {
                         }
                     </ul>
                     {
-                        user ? (<div className='flex gap-2 justify-between'>
-                            <Popover >
-                                <PopoverTrigger>
-                                    <Avatar className='cursor-pointer'>
-                                        <AvatarImage src={user?.profile?.profileImage || "https://github.com/shadcn.png"} />
+                        user ? (<div className='flex gap-2 justify-between mt-3.5'>
+                            
+                              <Popover >
+                                <PopoverTrigger >
+                                    <Avatar className='cursor-pointer' >
+                                        <AvatarImage src={user?.profile?.profileImage || "https://kawaii-avatar.vercel.app/api/avatar"} />
                                     </Avatar>
                                 </PopoverTrigger>
+                                {open?
                                 <PopoverContent className='w-80'>
                                     <div className='flex gap-5'>
                                         <Avatar className='cursor-pointer'>
-                                            <AvatarImage src={user?.profile?.profileImage || "https://github.com/shadcn.png"} />
+                                            <AvatarImage src={user?.profile?.profileImage || "https://kawaii-avatar.vercel.app/api/avatar"} />
                                         </Avatar>
                                         <div>
 
@@ -79,7 +84,7 @@ const Navbar = () => {
                                         {user?.role === 'Job Seeker' &&
                                             <div className='flex gap-2' >
                                                 <User2 className='mt-2' />
-                                                <Button variant="link"> <Link to="/profile">View Profile</Link></Button>
+                                                <Button variant="link" > <Link to="/profile">View Profile</Link></Button>
                                             </div>
                                         }
                                         <div className='flex gap-2'>
@@ -88,17 +93,18 @@ const Navbar = () => {
                                         </div>
                                     </div>
 
-                                </PopoverContent>
-
+                                </PopoverContent> : ''
+}
                             </Popover>
+                          
                             {/* <Button onClick={logoutHandler} className='bg-[#e76610] hover:bg-[#7a3304] mt-2'><Link to="/">Logout</Link></Button>             */}
                         </div>) : (
-                            <div className='flex gap-5 mt-3.5'>
+                            <div className='flex gap-1 md:gap-5 mt-3.5'>
                                 <>
-                                    <Button className='bg-[#e76610] hover:bg-[#7a3304]'><Link to="/login">Login</Link></Button>
-                                    <Button className='bg-[#e76610] hover:bg-[#7a3304]'><Link to="/signup">Signup</Link></Button>
+                                    <Button className='bg-[#e76610] hover:bg-[#7a3304] h-7 w-12 md:h-auto'><Link to="/login">Login</Link></Button>
+                                    <Button className='bg-[#e76610] hover:bg-[#7a3304] h-7 w-13 md:h-auto'><Link to="/signup">Signup</Link></Button>
                                 </>
-
+ 
                             </div>
                         )
                     }
@@ -106,7 +112,9 @@ const Navbar = () => {
 
 
                 </div>
+
             </div>
+       
             <Outlet />
         </>
     )

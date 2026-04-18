@@ -16,6 +16,8 @@ import CompanySetup from './components/admin/CompanySetup.jsx'
 import AdminJobs from './components/admin/AdminJobs.jsx'
 import PostJob from './components/admin/PostJob.jsx'
 import Applicants from './components/admin/Applicants.jsx'
+import AppliedJobTable from './components/AppliedJobTable.jsx'
+import ProtectedRoute from './components/ProtectedRoute.jsx'
 
 function App() {
 
@@ -24,26 +26,21 @@ function App() {
     <>
 
       <Routes>
-
         <Route path='/' element={<Navbar />}>
           <Route path='/' element={<Home />} />
           <Route path='/signup' element={<Signup />} />
           <Route path='/login' element={<Login />} />
-          <Route path='/jobs' element={<Jobs />} />
+          <Route path='/jobs' element={<Jobs />} />      {/* user should be redirected to login if not logged in and tries to access jobs page */}
           <Route path='/browse' element={<Browse />} />
+          <Route path='/my-jobs' element={<AppliedJobTable />} />
           <Route path='/profile' element={<Profile />} />
-          <Route path='/admin/companies' element={<Companies />} />
-          <Route path='/admin/companies/create' element={<CompanyCreate />}/>
-          <Route path='/admin/companies/:id' element={<CompanySetup />} />
-          <Route path='/admin/jobs' element={<AdminJobs />} />
-          <Route path='/admin/jobs/create' element={<PostJob />} />
-           <Route path='/admin/jobs/applicants/:id' element={<Applicants />} />
-          {/* <Route path='/admin/companies/create' element={<ProtectedRoute><CompanyCreate /></ProtectedRoute>} />
+          <Route path='/admin/companies' element={<ProtectedRoute><Companies /></ProtectedRoute>} />
+          <Route path='/admin/companies/create' element={<ProtectedRoute><CompanyCreate /></ProtectedRoute>} />
           <Route path='/admin/companies/:id' element={<ProtectedRoute><CompanySetup /></ProtectedRoute>} />
           <Route path='/admin/jobs' element={<ProtectedRoute><AdminJobs /></ProtectedRoute>} />
           <Route path='/admin/jobs/create' element={<ProtectedRoute><PostJob /></ProtectedRoute>} />
-          <Route path='/admin/jobs/:id/applicants' element={<ProtectedRoute><Applicants /></ProtectedRoute>} />
-          <Route path='/admin/companies' element={<ProtectedRoute><Companies /></ProtectedRoute>} /> */}
+          <Route path='/admin/jobs/applicants/:id' element={<ProtectedRoute><Applicants /></ProtectedRoute>} />
+          <Route path='/admin/companies' element={<ProtectedRoute><Companies /></ProtectedRoute>} /> 
         </Route>
 
         <Route path='/description/:id' element={<JobDescription />} />

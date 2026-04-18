@@ -10,7 +10,8 @@ const AppliedJobTable = () => {
   const { allAppliedJobs } = useSelector(store => store.job);
 
   return (
-    <Table>
+    <div className='mt-10 mx-auto my-10'>
+       <Table className='mx-auto'>
       <TableCaption>List of Applied Jobs {allAppliedJobs?.length}</TableCaption>
       <TableHeader>
         <TableRow>
@@ -22,7 +23,7 @@ const AppliedJobTable = () => {
       </TableHeader>
         <TableBody>
            { allAppliedJobs?.length > 0 ? allAppliedJobs.map((job, index) => (
-                  <TableRow key={index}>
+                  <TableRow key={job._id}>
                       <TableCell className="border border-gray-900">{job?.createdAt.split('T')[0]}</TableCell>
                       <TableCell className="border border-gray-900">{job?.jobId?.companyId?.companyName || 'N/A'}</TableCell>
                       <TableCell className="border border-gray-900">{job?.jobId?.title || 'N/A'}</TableCell>
@@ -39,6 +40,8 @@ const AppliedJobTable = () => {
           </TableBody>
 
     </Table>
+    </div>
+    
   )
 }
 

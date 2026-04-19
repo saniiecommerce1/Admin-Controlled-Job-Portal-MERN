@@ -4,6 +4,3 @@ build/
 .env
 **/.env
 .dockerignore
-Dockerfile
-
-

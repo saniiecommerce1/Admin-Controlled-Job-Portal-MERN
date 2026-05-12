@@ -116,7 +116,7 @@ export const logout = async (_, res) => {
         res.clearCookie("JWT-TOKEN", {
 
             httpOnly: true, // prevent XSS attacks: cross-site scripting document.cookie cannot access jwt cookie
-            sameSite: "strict", // CSRF attacks customer site request forgery
+            sameSite: "none", // CSRF attacks customer site request forgery
             secure: process.env.NODE_ENV === "production" ? true : false, //support https only in production
             path: '/'
         });

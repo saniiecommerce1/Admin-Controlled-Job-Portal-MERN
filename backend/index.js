@@ -31,7 +31,7 @@ const __dirname = path.resolve();
 //credentials true is must for cookie to work in FE + BE same server
 
  app.use(cors({
-    origin : "*",
+    origin : true,
      credentials: true
  }));
 
@@ -49,9 +49,12 @@ app.get("*", (req, res) => {
 });
 
 //must add 0.0.0.0 route for Docker to work
- app.listen(process.env.PORT, '0.0.0.0', ()=>{
-    console.log(`Server is connected on PORT : ${process.env.PORT}`)
-    connectDB()
+//  app.listen(process.env.PORT, '0.0.0.0', ()=>{
+//     console.log(`Server is connected on PORT : ${process.env.PORT}`)
+//     connectDB()
     
- })
+//  })
 
+//for vercel deployment
+connectDB()
+ export default app;

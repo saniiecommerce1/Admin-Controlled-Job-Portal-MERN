@@ -10,7 +10,7 @@ export const generateToken = (userId, res) => {
         maxAge: 7 * 24 * 60 * 60 * 1000, // ms in a week         
         httpOnly: true, // prevent XSS attacks: cross-site scripting document.cookie cannot access jwt cookie
         sameSite: "strict", // CSRF attacks customer site request forgery
-        secure: process.env.NODE_ENV === "production" ? true : false, //support https only in production
+        secure: process.env.MODE_ENV === "production" ? true : false, //support https only in production
         path: '/'
     });
     

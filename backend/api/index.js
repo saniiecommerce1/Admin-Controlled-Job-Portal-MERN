@@ -31,7 +31,7 @@ const __dirname = path.resolve();
 //credentials true is must for cookie to work in FE + BE same server
 
  app.use(cors({
-    origin : true,
+    origin : process.env.CLIENT_URL,
      credentials: true
  }));
 
@@ -46,12 +46,12 @@ const __dirname = path.resolve();
  app.use('/api/job' , jobRoute)
  app.use('/api/application' , applicationRoute)
 
- // serve frontend
-app.use(express.static(path.join(__dirname, "../public")));
+//  // serve frontend
+// app.use(express.static(path.join(__dirname, "../public")));
 
-app.get("*", (req, res) => {
-  res.sendFile(path.join(__dirname, "../public", "index.html"));
-});
+// app.get("*", (req, res) => {
+//   res.sendFile(path.join(__dirname, "../public", "index.html"));
+// });
 
 //must add 0.0.0.0 route for Docker to work
 //  app.listen(process.env.PORT, '0.0.0.0', ()=>{

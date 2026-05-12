@@ -42,10 +42,10 @@ const __dirname = path.resolve();
  app.use('/api/application' , applicationRoute)
 
  // serve frontend
-app.use(express.static(path.join(__dirname, "../frontend/dist")));
+app.use(express.static(path.join(__dirname, "public")));
 
 app.get("*", (req, res) => {
-  res.sendFile(path.join(__dirname, "../frontend/dist", "index.html"));
+  res.sendFile(path.join(__dirname, "public", "index.html"));
 });
 
 //must add 0.0.0.0 route for Docker to work

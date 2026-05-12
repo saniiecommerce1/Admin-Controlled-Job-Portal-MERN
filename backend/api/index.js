@@ -1,11 +1,11 @@
 import express from "express";
 import cors from "cors";
 import cookieParser from "cookie-parser";
-import connectDB from "./lib/db.js";
-import companyRoute from "./route/company.route.js";
-import userRoute from "./route/user.route.js";
-import jobRoute from "./route/job.route.js";
-import applicationRoute from "./route/application.route.js";
+import connectDB from "../lib/db.js";
+import companyRoute from "../route/company.route.js";
+import userRoute from "../route/user.route.js";
+import jobRoute from "../route/job.route.js";
+import applicationRoute from "../route/application.route.js";
 import path from "path";
 
 
@@ -35,6 +35,11 @@ const __dirname = path.resolve();
      credentials: true
  }));
 
+ app.get("/api/test", (req, res) => {
+  res.json({
+    success: true
+  });
+});
 
  app.use('/api/user' , userRoute)
  app.use('/api/company' , companyRoute)
@@ -42,10 +47,10 @@ const __dirname = path.resolve();
  app.use('/api/application' , applicationRoute)
 
  // serve frontend
-app.use(express.static(path.join(__dirname, "public")));
+app.use(express.static(path.join(__dirname, "../public")));
 
 app.get("*", (req, res) => {
-  res.sendFile(path.join(__dirname, "public", "index.html"));
+  res.sendFile(path.join(__dirname, "../public", "index.html"));
 });
 
 //must add 0.0.0.0 route for Docker to work

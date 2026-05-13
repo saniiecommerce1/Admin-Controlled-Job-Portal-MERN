@@ -12,3 +12,7 @@
 import companyLogo from '../../assets/company-logo.jpg' 
 13. .gitignore ----   nodemodule/ all sub folder not staged , unlike .env so **/.env 
 14. npm run dev -- --host 0.0.0.0 --port 3000 if not accessible in mobile bc firewall and wanna used different port like 3000
+
+15. options method in http? during preflight just browser check origin policy and 
+OPTIONS /api/user/login when ok in preflight
+POST /api/user/login then actual request browser send

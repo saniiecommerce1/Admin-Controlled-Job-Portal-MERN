@@ -37,7 +37,7 @@ const __dirname = path.resolve();
       allowedHeaders: ["Content-Type", "Authorization"]
  }));
 
- app.options("*", cors());
+//  app.options("*", cors());
 
  app.get("/api/test", (req, res) => {
   res.json({

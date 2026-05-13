@@ -31,13 +31,14 @@ const __dirname = path.resolve();
 //credentials true is must for cookie to work in FE + BE same server
 
  app.use(cors({
-    origin : process.env.CLIENT_URL,
+    origin : process.env.CLIENT_URL,    
      credentials: true
  }));
 
  app.get("/api/test", (req, res) => {
   res.json({
-    success: true
+    success: true,
+    allow: process.env.CLIENT_URL
   });
 });
 

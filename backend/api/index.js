@@ -43,15 +43,15 @@ const __dirname = path.resolve();
 
 console.log("CORS ORIGIN:", process.env.CLIENT_URL);
 
-//  app.use(cors({
-//     origin : "https://thunderous-eclair-429be2.netlify.app",
-//     credentials: true    
-//  }))
+ app.use(cors({
+    origin : "https://thunderous-eclair-429be2.netlify.app",
+    credentials: true    
+ }))
 
-  app.use(cors({
-  origin: process.env.CLIENT_URL,
-  credentials: true
-}));
+//   app.use(cors({
+//   origin: process.env.CLIENT_URL,
+//   credentials: true
+// }));
 //FE + BE same server 
 //credentials true is must for cookie to work in FE + BE same server
 

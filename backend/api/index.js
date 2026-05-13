@@ -21,29 +21,31 @@ dotenv.config()
 
 const __dirname = path.resolve();
 
-const allowedOrigins = [
-  "https://thunderous-eclair-429be2.netlify.app"
-];
+// const allowedOrigins = [
+//   "https://thunderous-eclair-429be2.netlify.app"
+// ];
 
-app.use(cors({
-  origin: function (origin, callback) {
+// app.use(cors({
+//   origin: function (origin, callback) {
 
-    // allow requests with no origin
-    // like mobile apps or Postman
-    if (!origin) return callback(null, true);
+//     // allow requests with no origin
+//     // like mobile apps or Postman
+//     if (!origin) return callback(null, true);
 
-    if (allowedOrigins.includes(origin)) {
-      return callback(null, true);
-    }
+//     if (allowedOrigins.includes(origin)) {
+//       return callback(null, true);
+//     }
 
-    return callback(new Error("CORS not allowed"));
-  },
-  credentials: true
-}));
-//  app.use(cors({
-//     origin : process.env.CLIENT_URL,
-//     credentials: true    
-//  }))
+//     return callback(new Error("CORS not allowed"));
+//   },
+//   credentials: true
+// }));
+
+
+ app.use(cors({
+    origin : "https://thunderous-eclair-429be2.netlify.app",
+    credentials: true    
+ }))
 
 //FE + BE same server 
 //credentials true is must for cookie to work in FE + BE same server

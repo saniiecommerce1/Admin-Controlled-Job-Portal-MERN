@@ -42,10 +42,10 @@ const __dirname = path.resolve();
 // }));
 
 
- app.use(cors({
-    origin : "https://thunderous-eclair-429be2.netlify.app",
-    credentials: true    
- }))
+//  app.use(cors({
+//     origin : "https://thunderous-eclair-429be2.netlify.app",
+//     credentials: true    
+//  }))
 
 //FE + BE same server 
 //credentials true is must for cookie to work in FE + BE same server
@@ -57,10 +57,10 @@ const __dirname = path.resolve();
 //       allowedHeaders: ["Content-Type", "Authorization"]
 //  }));
 
-//  app.use(cors({
-//   origin: process.env.CLIENT_URL,
-//   credentials: true
-// }));
+ app.use(cors({
+  origin: process.env.CLIENT_URL,
+  credentials: true
+}));
 
 // app.options("*", cors({
 //   origin: process.env.CLIENT_URL,

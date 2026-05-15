@@ -44,7 +44,7 @@ const __dirname = path.resolve();
 console.log("CORS ORIGIN:", process.env.CLIENT_URL);
 
  app.use(cors({
-    origin : "https://thunderous-eclair-429be2.netlify.app",
+    origin : "https://job-portal-applications.netlify.app",
     credentials: true    
  }))
 
